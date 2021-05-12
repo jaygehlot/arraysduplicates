@@ -1,13 +1,12 @@
 package com.scratchpad;
 
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 
 class ArrayDuplicatesTest {
@@ -28,5 +27,13 @@ class ArrayDuplicatesTest {
     void sumOfDuplicateValues() {
         List<Integer> dedupedResults = new ArrayList<>(arrayDuplicates.findDuplicateBySetAdd(inputNumbers));
         assertThat(arrayDuplicates.sumOfDuplicates(dedupedResults), is(9));
+    }
+
+    @Test
+    void emptyArrayShouldProvideEmptyDedupedOutput() {
+        final int [] emptyArray = new int [] {};
+        List<Integer> deDupedResults = new ArrayList<>(arrayDuplicates.findDuplicateBySetAdd(emptyArray));
+
+        assertThat(deDupedResults, is(empty()));
     }
 }
