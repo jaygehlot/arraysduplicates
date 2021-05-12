@@ -7,30 +7,26 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 class ArrayDuplicatesTest {
 
     private final int [] inputNumbers = new int [] {7, 2, 7, 7, 9, 5, 2};
+    private final ArrayDuplicates arrayDuplicates = new ArrayDuplicates();
 
     @Test
-    void test() {
-        ArrayDuplicates duplicates = new ArrayDuplicates();
-
-        List<Integer> deDupedResults = new ArrayList<>(duplicates.findDuplicateBySetAdd(inputNumbers));
+    void printOutDuplicates() {
+        List<Integer> deDupedResults = new ArrayList<>(arrayDuplicates.findDuplicateBySetAdd(inputNumbers));
 
         deDupedResults.forEach(System.out::println);
-        MatcherAssert.assertThat(deDupedResults.get(0), Matchers.is(2));
-        MatcherAssert.assertThat(deDupedResults.get(1), Matchers.is(7));
+        assertThat(deDupedResults.get(0), is(2));
+        assertThat(deDupedResults.get(1), is(7));
     }
 
     @Test
     void sumOfDuplicateValues() {
-        ArrayDuplicates duplicates = new ArrayDuplicates();
-
-        List<Integer> dedupedResults = new ArrayList<>(duplicates.findDuplicateBySetAdd(inputNumbers));
-        MatcherAssert.assertThat(duplicates.sumOfDuplicates(dedupedResults), Matchers.is(9));
-
+        List<Integer> dedupedResults = new ArrayList<>(arrayDuplicates.findDuplicateBySetAdd(inputNumbers));
+        assertThat(arrayDuplicates.sumOfDuplicates(dedupedResults), is(9));
     }
-
-
-
 }
